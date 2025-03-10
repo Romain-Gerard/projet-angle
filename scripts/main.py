@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import packangle as pa
 
 if __name__ == "__main__":
-    # On parse le fichier GRO
+    # On parse le fichier .gro
     dict_aa = pa.parse_gro("../data/start.gro")
 
     # On extrait les coordonnées des atomes nécessaires pour le calcul des angles phi et psi

@@ -340,4 +340,4 @@ def get_khi1_khi2_angles(dict_khi_coors):
     return dict_khi_angles, list_khi
 
 if __name__ == "__main__":
-    print("Uniquement un package de fonctions utilisées dans main.py. Ne fais rien tout seul.")
+    print("Package de fonctions utilisées dans main.py. Ne fais rien tout seul.")
