@@ -35,19 +35,19 @@ Vous pouvez les installer avec :
 pip install numpy matplotlib
 ```
 ## 🛠️ Utilisation:
-1- **Extraction des coordonnées des atomes/** : Le script `packangle.py` contient une fonction `parse_gro()` qui extrait les coordonnées atomiques des résidus du fichier `.gro`.
+1- **Extraction des coordonnées des atomes** : Le script `packangle.py` contient une fonction `parse_gro()` qui extrait les coordonnées atomiques des résidus du fichier `.gro`.
 ```
 from packangle import parse_gro
 
 dict_aa = parse_gro("../data/start.gro")
 print(dict_aa)
 ```
-2- **Calcul des angles Phi et Psi/** : Le script `main.py` extrait les coordonnées des atomes nécessaires et calcule les angles dièdres phi et psi. \n
+2- **Calcul des angles Phi et Psi** : Le script `main.py` extrait les coordonnées des atomes nécessaires et calcule les angles dièdres phi et psi. \n
 Exécuter le script :
 ```
 python scripts/main.py
 ```
-3- **Génération du diagramme de Ramachandran/** : 
+3- **Génération du diagramme de Ramachandran** : 
 Le script `main.py` génère un diagramme de Ramachandran basé sur les angles phi et psi extraits :
 ```
 plt.scatter(phi, psi)
@@ -56,7 +56,7 @@ plt.ylabel("Psi")
 plt.title("Diagramme de Ramachandran")
 plt.show()
 ```
-4- **Execution du script run.sh/** : 
+4- **Execution du script run.sh** : 
 Le script shell permet de convertir un fichier `.xtc` en `.pdb` en utilisant `gmx trjconv` :
 ```
 bash scripts/run.sh
