@@ -11,7 +11,7 @@ if __name__ == "__main__":
     # Génération des diagrammes de Ramachandran pour chaque frame
     for frame_num in range(3001):
         frame_filename = f"frame_{frame_num:04d}.gro"
-        frame_path = f"../data/{frame_filename}"
+        frame_path = frame_filename  # Les fichiers sont dans le même répertoire que le script
         
         # Vérification si le fichier existe
         if not os.path.exists(frame_path):
