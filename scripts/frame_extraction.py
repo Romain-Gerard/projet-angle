@@ -1,14 +1,16 @@
 import MDAnalysis as mda
 
-#we will load the trajectory using start.gro as our topology file
-u=mda.Universe("../data/start.gro", "../data/md_OK_dt100.xtc")
+# Charger la trajectoire en utilisant start.gro comme fichier de topologie
+u = mda.Universe("../data/start.gro", "../data/md_OK_dt100.xtc")
 
-#now we will create .gro files for each frame in the xtc
+# Parcourir toutes les frames de la trajectoire
 for ts in u.trajectory:
-  frame_number = ts.frame #getting the frame index
-  output_filename=f"frame_{frame_number:04d}.gro" #eg: frame_0001.gro
+    frame_number = ts.frame  # Récupérer l'index de la frame actuelle
+    output_filename = f"frame_{frame_number:04d}.gro"  # Générer un nom de fichier, ex : frame_0001.gro
 
-  with mda.Writer(output_filename, n_atoms = u.atoms.n_atoms) as w:
-    w.write(u.atoms)
+    # Écrire la frame actuelle dans un fichier .gro
+    with mda.Writer(output_filename, n_atoms=u.atoms.n_atoms) as w:
+        w.write(u.atoms)  # Sauvegarder les atomes de la frame actuelle
 
-print(f"Saved: {output_filename}")
+# Afficher le dernier fichier sauvegardé
+print(f"Sauvegardé : {output_filename}")
