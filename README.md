@@ -6,9 +6,10 @@ Ce projet permet d'extraire et d'analyser les angles dièdres d'une structure mo
 ## 📂 Structure du projet
 ``` 
 projet-angle/
-│── data/            # contient les fichiers de données .grp
-│ ├── md.gro │
-├── start.gro
+│── data/            # contient les fichiers de données .gro et .xtc
+│ ├── md.gro
+│ ├── start.gro
+| ├── md_OK_dt100.xtc
 │── scripts/         # contient les scripts python et shell
 │ ├── pycache/
 │ ├── main.py        # Script principal pour l'analyse
