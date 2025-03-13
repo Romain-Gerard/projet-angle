@@ -193,24 +193,21 @@ def get_khi1_khi2_coors(dict_aa):
 
 def compute_dihedral(mat_coors):
     """
-    Calcule l’angle dièdre en degrés entre 4 atomes consécutifs à partir de leurs
-    coordonnées cartésiennes.
-
+    Calcule l'angle dièdre en degrés entre 4 atomes consécutifs à partir de leurs coordonnées cartésiennes.
+    
     Arguments:
-        mat_coors (matrice numpy) :
-            Une matrice de coordonnées cartésiennes de 4 atomes consécutifs.
-            Chaque ligne correspond à un atome et chaque colonne à une coordonnée.
-
+        mat_coors (matrice numpy) : Une matrice de coordonnées cartésiennes de 4 atomes consécutifs.
+                                   Chaque ligne correspond à un atome et chaque colonne à une coordonnée.
+    
     Retourne:
-        float :
-            La valeur de l’angle dièdre en degrés compris entre -180° et +180°.
-
+        float : La valeur de l'angle dièdre en degrés compris entre -180° et +180°.
+    
     Fonctionnement:
         1. On construit les vecteurs entre les atomes.
         2. On calcule les normales aux plans formés par les vecteurs.
-        3. On calcule l’angle entre les deux normales.
+        3. On calcule l'angle entre les deux normales en tenant compte du signe.
     
-    Exemple d’utilisation:
+    Exemple d'utilisation:
         >>> mat_coors = np.array([
         ...     [0, 0, 0],
         ...     [1, 0, 0],
@@ -224,14 +221,28 @@ def compute_dihedral(mat_coors):
     vec1 = mat_coors[1] - mat_coors[0]
     vec2 = mat_coors[2] - mat_coors[1]
     vec3 = mat_coors[3] - mat_coors[2]
-
+    
     # On calcule les normales aux plans
     norm1 = np.cross(vec1, vec2)
     norm2 = np.cross(vec2, vec3)
-
-    # On calcule l'angle entre les deux normales
-    cos_angle = np.dot(norm1, norm2) / (np.linalg.norm(norm1) * np.linalg.norm(norm2))
-    angle_rad = np.arccos(cos_angle)
+    
+    # Normalisation des vecteurs normaux
+    norm1 = norm1 / np.linalg.norm(norm1)
+    norm2 = norm2 / np.linalg.norm(norm2)
+    
+    # Calcul du produit scalaire pour déterminer l'angle
+    cos_angle = np.dot(norm1, norm2)
+    
+    # Pour déterminer le signe de l'angle on utilise le produit mixte
+    # avec le vecteur central comme référence
+    vec2_norm = vec2 / np.linalg.norm(vec2)
+    sign = np.sign(np.dot(np.cross(norm1, norm2), vec2_norm))
+    
+    # Calcul de l'angle en radians puis conversion en degrés
+    angle_rad = np.arccos(np.clip(cos_angle, -1.0, 1.0))
+    if sign < 0:
+        angle_rad = -angle_rad
+    
     angle_deg = np.degrees(angle_rad)
     
     return angle_deg
