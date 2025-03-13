@@ -36,6 +36,6 @@ if __name__ == "__main__":
     plt.xticks(np.arange(-180, 181, 60))
     plt.yticks(np.arange(-180, 181, 60))
     plt.show
-    #plt.savefig("diagramme_ramachandran.png")
+    #plt.savefig("diagramme_test.png")
 
 
