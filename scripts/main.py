@@ -25,8 +25,17 @@ if __name__ == "__main__":
     # On affiche le diagramme de Ramachandran pour les angles phi et psi
     phi = list_phi_psi_angles[0]
     psi = list_phi_psi_angles[1]
-    plt.scatter(phi, psi)
-    plt.xlabel("Phi")
-    plt.ylabel("Psi")
-    plt.title("Diagramme de Ramachandran")
-    plt.show()
+    plt.figure(figsize=(8, 8))
+    plt.scatter(phi, psi, alpha=0.7, edgecolor='k', s=50)
+    plt.xlabel("φ°", fontsize=12)
+    plt.ylabel("ψ°)", fontsize=12)
+    plt.title("Diagramme de Ramachandran", fontsize=14)
+    plt.grid(True, linestyle='--', alpha=0.5)
+    plt.xlim(-180, 180)
+    plt.ylim(-180, 180)
+    plt.xticks(np.arange(-180, 181, 60))
+    plt.yticks(np.arange(-180, 181, 60))
+    plt.show
+    #plt.savefig("diagramme_ramachandran.png")
+
+
