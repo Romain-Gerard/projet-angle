@@ -1,4 +1,4 @@
-# Projet-Angle
+# TO BE UPDATED : Projet-Angle
 
 ## 📌 Description
 Ce projet permet d'extraire et d'analyser les angles dièdres d'une structure moléculaire à partir d'un fichier **GROMACS (.gro)**. Il génère notamment un **diagramme de Ramachandran** pour visualiser les angles phi et psi.
