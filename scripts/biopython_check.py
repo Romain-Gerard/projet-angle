@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from Bio import PDB
 
 # Liste des fichiers PDB à analyser
-pdb_files = ["start.pdb", "md.pdb"]
+pdb_files = ["../pdb/start.pdb", "../pdb/md.pdb"]
 
 # Dossier pour stocker les diagrammes
 output_folder = "biopython_ramachandran"
@@ -42,10 +42,10 @@ def plot_ramachandran(pdb_filename, phi_angles, psi_angles):
     plt.ylim(-180, 180)
     plt.xlabel("Phi (°)")
     plt.ylabel("Psi (°)")
-    plt.title(f"Diagramme de Ramachandran - {pdb_filename}")
+    plt.title(f"Diagramme de Ramachandran - {os.path.basename(pdb_filename)}")
 
     # Sauvegarde du diagramme
-    output_path = os.path.join(output_folder, f"ramachandran_{pdb_filename}.png")
+    output_path = os.path.join(output_folder, f"ramachandran_{os.path.basename(pdb_filename)}.png")
     plt.savefig(output_path, dpi=300)
     plt.close()
 
