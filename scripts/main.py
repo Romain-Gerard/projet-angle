@@ -28,7 +28,7 @@ if __name__ == "__main__":
     plt.figure(figsize=(8, 8))
     plt.scatter(phi, psi, alpha=0.7, edgecolor='k', s=50)
     plt.xlabel("φ°", fontsize=12)
-    plt.ylabel("ψ°)", fontsize=12)
+    plt.ylabel("ψ°", fontsize=12)
     plt.title("Diagramme de Ramachandran", fontsize=14)
     plt.grid(True, linestyle='--', alpha=0.5)
     plt.xlim(-180, 180)
